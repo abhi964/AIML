@@ -17,23 +17,6 @@ nlp = spacy.load("en_core_web_sm")
 stop_words = nlp.Defaults.stop_words
 punctuations = string.punctuation
 
-
-def spacy_tokenizer(sentence):
-    # Creating our token object, which is used to create documents with linguistic annotations.
-    doc = nlp(sentence)
-
-    # print(doc)
-
-    # Lemmatizing each token and converting each token into lowercase
-    mytokens = [ word.lemma_.lower().strip() for word in doc ]
-
-    # print(mytokens)
-
-    # Removing stop words
-    mytokens = [ word for word in mytokens if word not in stop_words and word not in punctuations ]
-
-    # return preprocessed list of tokens
-    return mytokens
 import re
 def clean_text(text):
     text = re.sub("-", " ", text)
